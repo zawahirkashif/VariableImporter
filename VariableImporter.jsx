@@ -1,33 +1,5 @@
-/***
-{
-	"name" : "VariableImporter 8",
-	"scriptVersion" : "8.2.4",
-	"note" : "This script helps to import .CSV and tab-delimited .TXT spreadsheets as Illustrator XML datasets.",
-	"author" : {
-		"by" : "Vasily Hall",
-    "email" : "vasily.hall@gmail.com",
-    "linkedIn" : "https://www.linkedin.com/pub/vasily-hall/18/166/912?trk=biz_employee_pub"
-	},
-	"thanks" : [
-		"Thanks to the global community of Illustrator enthusiasts who have helped make this script happen:",
-    "* Hans Boon / testing on multiple versions, workstations & platforms" ,
-    "* Stephen Marsh / http://prepression.blogspot.com/" ,
-    "* Andy VanWagoner's CSV Parser / http://stackoverflow.com/users/1701761/andy-vanwagoner" ,
-    "* Albert Bassa / 'double-backslash' line-break character suggestion" ,
-    "* John Garrett / http://hypertransitory.com/" ,
-    "* Dmitriy Gritsenko / help with multiple graph-data import" ,
-    "* Norbert Gindl / user testing multiple graph-data import" ,
-    "* Alice Elliott / bug fix in graph-data import" ,
-    "* Ryan Campbell / interval increments" ,
-    "* The great people of Adobe Scripting Forums"
-  ]
-}
-***/
-
-
 #target illustrator
 #targetengine main
-//the ui has problems and crashes when this isn't used
 #script "VariableImporter"
 
 function VariableImporter(){
@@ -258,9 +230,7 @@ function writeImageFile(binary, dest){
 };
 
 function getScriptImage(imageObj) {
-  /*
-    imageObj = { "data" : embeddedImageData, "name" : imageName }
-  */
+ 
   var scriptDataFolder = SESSION.scriptDataFolder;
   if(!scriptDataFolder){
     return false;
@@ -274,30 +244,8 @@ function getScriptImage(imageObj) {
   }
   return thisFile;
 };
-/*
-function writeScriptImages() {
-  var scriptDataFolder = SESSION.scriptDataFolder;
-  for(var all in ICONS){
-    var thisFile = File(scriptDataFolder + "/" + all + '.png');
-    if(!thisFile.exists){
-      writeImageFile(ICONS[all], thisFile);
-      if(!thisFile.exists) {
-        return false;
-      } else {
-        ICONS[all] = thisFile;
-      }
-    } else {
-      ICONS[all] = thisFile;
-    }
-  }
-  return true;
-};
-*/
 
 var CSV = {
-  // ===================================================== http://stackoverflow.com/a/12785546
-  // ===================================================== Andy VanWagoner
-  // ===================================================== http://thetalecrafter.com/
   parse: function(csv, reviver, splitter) {
     splitter = splitter  || ',';
     reviver = reviver || function(r, c, v) { return v; };
@@ -523,12 +471,6 @@ function getSpecificValuePropertyListArr(srcArr, filterProp, filterValue, search
   return arr;
 };
 
-
-
-//==================================================================================//
-
-//================================== FUNCTIONS_2 ===================================//
-
 function writeFile(fileObj, contents, encoding){
 	if(typeof encoding == "string"){
 		fileObj.encoding = encoding;
@@ -624,10 +566,6 @@ function updateCurrentPresetNameDisplays(UIElements, currentLoadedPresetObj, try
 			testObj[all] = currentLoadedPresetObj[all];
 		}
 		hasOverrides = JSON.stringify(testObj) !== JSON.stringify(currentUIStatePresetObj);
-		// quickView(
-		// 	JSON.stringify(testObj, null, 2) + "\n\n" +
-		// 	JSON.stringify(currentUIStatePresetObj, null, 2)
-		// );
 	}
 	var thisElem;
 	for (var i = 0; i < UIElements["currentlySelectedPresetName"].length; i++) {
@@ -656,7 +594,6 @@ function setVisibilityKeysEnabled(visKeyNames){
 };
 
 function populateUI(UIElements, tryAddOverridesMarker){
-	// tryAddOverridesMarker should be used when this function is invoked after window loading
 	var currentLoadedPresetObj = PRESETS.getByName(SESSION.currentLoadedPresetName);
 	if(currentLoadedPresetObj.hasOwnProperty("enabledVisibilityKeyNames")){
 		setVisibilityKeysEnabled(currentLoadedPresetObj.enabledVisibilityKeyNames);
@@ -731,7 +668,6 @@ function addVarNameDatasetNames(){
 };
 
 function clearOutOfBoundVariables(obj){
-	// variable field values and custom increment objects in dataset name fields
 	var varNames = DATA.getVariableNames();
 	var idx;
 	missingVariableNamesLog = [];
@@ -917,7 +853,6 @@ function getSpecificFileRefTestResultsLog(log, prop){
 };
 
 function fileRefTestHandler(){
-	// designed to be called from a button which has a .key property saying which part of the log to show. (.key = "Images" | .key = "Graphs")
 	if(DATA.currentVars.length == 0){
 		alert("Please import a data file first.");
 		return;
@@ -971,10 +906,6 @@ eval(
 );
 
 
-//==================================================================================//
-
-//================================== FUNCTIONS_2 ===================================//
-
 function stringXmlSafe(str){
   str=str.toString();
   str=str.replace(/&(?!(amp;|gt;|lt;|quot;|apos;))/g, "&amp;");
@@ -1013,7 +944,6 @@ function wrapCDATA(str, propNm){
 };
 
 function isXMLTagName ( tag ){
-	//http://stackoverflow.com/questions/3158274/what-would-be-a-regex-for-valid-xml-names
   var t = !/^[xX][mM][lL].*/.test(tag); // condition 3 
   t = t && /^[a-zA-Z_].*/.test(tag);  // condition 2
   t = t && /^[a-zA-Z0-9_\-\.]+$/.test(tag); // condition 4
@@ -1132,10 +1062,6 @@ function processUserInput(userInputObj) {
 };
 
 
-
-//==================================================================================//
-
-//==================================== OBJECTS =====================================//
 var SESSION = {
 	os : $.os.match('Windows') ? 'Windows' : 'Mac',
 	AIVersion : parseInt(app.version.split(/\./)[0]),
@@ -1166,19 +1092,7 @@ var SESSION = {
 	tabbedGroupTest : false,
 	imageTest : false,
 	doImageTest : function(){
-		/*var thisIcon;
-		var flag = true;
-		try{
-			for (var all in ICONS) {
-				thisIcon = ICONS[all];
-				parent.add("iconbutton", undefined, thisIcon);
-			};
-		} catch(e) {
-			// fail Error 520, try to write the images
-			flag = writeScriptImages();
-		}
-		this.imageTest = flag;
-		*/
+		
 		var flag = true, thisIconString, test;
 		for (var all in ICONS) {
 			thisIconString = ICONS[all];
@@ -1673,12 +1587,7 @@ var DATA = {
 	transposedGrid : [],
 	currentSourceFile : "",
 	currentVars : [
-		/*{
-			varName : "Variable1",
-			varType : "Text",
-			url : "",
-			varIndex : 0
-		}*/
+
 	],
 	oldVars : [],
 	testVariableName : function(oldName, newName){
@@ -1782,8 +1691,6 @@ var DATA = {
 				url : thisUrl
 			});
 		}
-		// go through variable names and make sure they follow xml syntax, if they all do, then make sure they're unique also
-		// any failure will cause genericizing
 		if(this.testVarNames_xml()){
 			this.testNameProp_unique({
 				collection : this.currentVars,
@@ -1826,7 +1733,6 @@ var DATA = {
 		this.currentGrid = arr;
 
 		this.currentDatasetNames = dsnArr;
-		// untested for uniqueness at this point.
 	},
 	getTestDatasetNames : function(dsNameFieldObj){
 		if(this.currentVars.length == 0){
@@ -1840,8 +1746,6 @@ var DATA = {
 			dsnArr.push(getRecordDatasetName(dsNameFieldObj, row, i - start));
 		};
 
-		// make sure dataset names are unique, or else they get genericized
-		// already done when getting currentGrid, omit dialog
 		this.testNameProp_unique({
 			collection : dsnArr,
 			prop : undefined,
@@ -1890,7 +1794,6 @@ var AUTOBINDING = {
 	}
 };
 
-//visibility keys are tested against lower-case cell data
 var VisibilityKeys = [
 	{
 		displayText : "true",
@@ -1945,13 +1848,7 @@ var INFO = {
 		"5) Element names cannot contain spaces"
 };
 
-SESSION.init(); //---------------------------------------------------------------------------------------------------- INIT SESSION
-
-
-
-//==================================================================================//
-
-//================================= OBJECTS PT 2 ===================================//
+SESSION.init();
 
 var DocumentBinding = {
 	// names of variables are expected to be unique, but art identifying properties (.name , .note and .tags.tag) are not.
@@ -2165,9 +2062,6 @@ function FileTestSeeker(prop){
 	}
 };
 
-//=============================================================================================================================================//
-//=============================================================== GRAPH DATA ==================================================================//
-//=============================================================================================================================================//
 var GraphDataGatherer = {
 	emptyGraphString : "<data  numDataColumns=\"2\">" + "\r" +
     "<values>" + "\r" +
@@ -2269,8 +2163,6 @@ var GraphDataGatherer = {
 	      res += '<value></value>';
 	    }
 	    for (; col < rows[0].length; col++) {
-	      // res += '<value' + (this.isquoted(rows[row][col]) || rows[row][col].match(/[a-z]/gi) ? '  type="string">' : '>')
-	      //        + stringXmlSafe(this.unquoted(rows[row][col])) + '</value>';
 	      thisCell = rows[row][col];
 	      myAnalyzedCell = this.analyzeCellContent(thisCell);
 	      res += '<value' + (((myAnalyzedCell.isQuoted && myAnalyzedCell.isNumber) || myAnalyzedCell.isWord) ? '  type="string">' : '>') +
@@ -2288,8 +2180,7 @@ var GraphDataGatherer = {
 	    res += '<row>';
 	    col = 0;
 	    if (hasnamecol) {
-	      // res += '<value ' + (this.isquoted(rows[row][col]) || rows[row][col].match(/[a-z]/gi) ? ' type="string"' : '')
-	      //        + ' key="name">' + stringXmlSafe(this.unquoted(rows[row][col++])) + '</value>';
+	  
 	      thisCell = rows[row][col];
 	      myAnalyzedCell = this.analyzeCellContent(thisCell);
 	      res += '<value ' +
@@ -2607,7 +2498,6 @@ var XMLStringBuilder = {
 	    dataSetsGroup.appendChild( dataSetNode );
 		};
 
-		// return dataSetsGroup.toString().replace(/xmlns:v="v" /g, '').replace(/(<root>|<\/root>)/g, '');
 		return dataSetsGroup.toString().replace(/sampleDataSet/g, 'v:sampleDataSet').replace(/(<root>|<\/root>)/g, '');
 	},
 	generateVariableLibraryXMLString : function(){
@@ -2648,15 +2538,6 @@ var XMLStringBuilder = {
 	}
 };
 
-
-
-
-
-//==================================================================================//
-
-//=================================== UI WINDOW ====================================//
-
-/*============================================== UI PROTOTYPES ==================================================*/
 
 DropDownList.prototype.selectWell = function () {
   //CC will let you select null
@@ -2919,9 +2800,6 @@ for (var i = 0; i < UIElements.length; i++) {
     this.graphics.backgroundColor = this.graphics.newBrush(this.graphics.BrushType.SOLID_COLOR, [rgb[0], rgb[1], rgb[2]]);
   }
 };
-
-/*======================================================== FUNCTIONS ========================================================*/
-
 
 
 function scriptAlert(msg) {
@@ -3299,10 +3177,6 @@ function UIWindow(){
 };
 
 
-
-//==================================================================================//
-
-//================================= UI WINDOW PT 2 =================================//
 function displayData(dataObj){
 
 	var newItem, datum, varType, varName, oldVars = DATA.oldVars;
@@ -3365,7 +3239,6 @@ function getVariableDisplayHeight(varAmt){
 	return 100;
 };
 
-//---------------------------------------------- Variable Display -----------------------------------------------//
 function variablesDisplayGroup(parent){
 	var g1 = parent.add("group");
   g1.orientation = "column";
@@ -3472,25 +3345,6 @@ function variablesDisplayGroup(parent){
 			var dialogResult = variableOptionsDialog(DATA.currentVars[this.selection.index]);
 			if(dialogResult != null && dialogResult.changed){
 				DATA.currentVars[this.selection.index] = dialogResult.varObj;
-				/*
-				this.selection.text = varObj.varName;
-				if(SESSION.AIVersion == 16){
-					// problems with CS6 multi-column listbox
-					if(SESSION.imageTest){
-						this.selection.icon = ICONS[varObj.varType];
-						this.selection.text = this.selection.text + " | " + varType
-					}
-				} else {
-					if(SESSION.imageTest){
-						this.selection.subItems[0].icon = ICONS[varObj.varType];
-						this.selection.subItems[1].text = varObj.varType;
-						this.selection.subItems[2].text = "";
-					} else {
-						this.selection.subItems[0].text = varObj.varType;
-						this.selection.subItems[1].text = "";
-					}
-				}
-				*/
 				this.displayData(DATA.currentVars);
 				TestManager.clearAllTestDisplays(this.window.UITestElements);
 			}
@@ -3508,9 +3362,6 @@ function variablesDisplayGroup(parent){
 	return g1;
 };
 
-//------------------------------------------------------------------------------------------------------//
-
-//--------------------------------------- General Options ----------------------------------------------//
 
 function optionsGroup(parent){
 	var g1 = parent.add("group");
@@ -3708,9 +3559,6 @@ function optionsGroup(parent){
 	return g1;
 };
 
-//------------------------------------------------------------------------------------------------------//
-
-//---------------------------------------- Prepend Paths -----------------------------------------------//
 
 function changeVarUrls(prop, newUrl){
 	var thisObj;
@@ -3805,9 +3653,6 @@ function prependPathsGroup(parent){
 	return g1;
 };
 
-//------------------------------------------------------------------------------------------------------//
-
-//--------------------------------------- Presets Options ----------------------------------------------//
 
 function getPropertySummaryString(obj){
   var msg = [];
@@ -4079,14 +3924,6 @@ function refreshPresetListbox(elem){
 	};
 };
 
-//------------------------------------------------------------------------------------------------------//
-
-
-//==================================================================================//
-
-//================================= UI WINDOW PT 3 =================================//
-
-//---------------------------------------------- Testing Area -----------------------------------------------//
 
 function testAreaGroup(parent){
 	var g1 = parent.add("group");
@@ -4140,7 +3977,6 @@ function testAreaGroup(parent){
 	return g1;
 };
 
-//-----------------------------------------------------------------------------------------------------------//
 
 function toggleUrlInputVis(ddlist, toggleElem){
 	if(ddlist.selection != null){
@@ -4433,7 +4269,6 @@ function finishedXMLImportDialog(varsNum, recordsNum, missingImgNum, missingGrfN
 	w.show();
 };
 
-//---------------------------------------------------------------------------------------- CUSTOM INCREMENTS ------------------------------------------------------------------//
 function updateCustomIncrementDisplay(display, customIncObj){
 	var arr = [], prefixStr;
 	for (var i = 0; i < 10; i++) {
@@ -4500,7 +4335,7 @@ function customIncrementsDialog(){
 			if(val != "0" && val.indexOf("0") > -1){
 				val = val.replace(/^0+/, "");
 				if(val == ""){
-					val = 0; // put it back to zero if the entered string was all zeroes
+					val = 0; 
 				}
 			}
 			this.setValue(val);
@@ -4638,7 +4473,7 @@ function customIncrementsDialog(){
 			scriptAlert("At least one custom increment must be present in the list to save.");
 			return;
 		} else {
-			// only save the custom increment portion of the settings file
+		
 			SESSION.settingsFile.open('r');
 			var settingsObj = JSON.parse(SESSION.settingsFile.read());
 			SESSION.settingsFile.close();
@@ -4656,8 +4491,6 @@ function customIncrementsDialog(){
 		};
 	}
 };
-
-//---------------------------------------------------------------------------------------- VISIBILITY KEYS ------------------------------------------------------------------//
 function populateVisKeyList(listElem, visKeys){
   for (var i = listElem.items.length - 1; i > -1;  i--) {
     listElem.remove(i);
@@ -4796,8 +4629,6 @@ function visibilityKeysDialog(){
   			var list = self.list;
   			var isTrueList = list.name == "True List";
   			var isAddBtn = self.text == "Add \u2795";
-  			// check the list data against memory object to give the OK button a save-&-apply or only-apply functionality.
-  			// add/remove item
   			if(isAddBtn){
   				var isValidAddition, thisValueInputElem, thisNameInputElem, problem;
   				if(isTrueList){
@@ -4945,7 +4776,6 @@ function visibilityKeysDialog(){
 	}
 };
 
-//==================================================================================//
 
 	var userData = UIWindow();
 	if(userData == null){
