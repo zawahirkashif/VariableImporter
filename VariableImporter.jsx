@@ -4,9 +4,6 @@
 
 function VariableImporter(){
 
-//=================================== FUNCTIONS ====================================//
-
-
 if (!Array.prototype.indexOf) {
   Array.prototype.indexOf = function(searchElement, fromIndex) {
     var k;
