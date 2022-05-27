@@ -8,7 +8,7 @@ The top issues resolved with the script are:
 - You can customize Dataset names at import time.
 There are many more little niceties within the script, so let’s go ahead and take a look.
 
-# Get The Variable Importer Script
+## Get The Variable Importer Script
 
 ![Download](https://cdn.loom.com/images/originals/970bed8321424ee2a399626e8735f660.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZG4ubG9vbS5jb20vaW1hZ2VzL29yaWdpbmFscy85NzBiZWQ4MzIxNDI0ZWUyYTM5OTYyNmU4NzM1ZjY2MC5qcGciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NTM3MDQzNjl9fX1dfQ__&Key-Pair-Id=APKAJQIC5BGSW7XXK7FQ&Signature=nL-VDQopLaBjfxk-MOauMVg1tyCjf4R5NLG2wcOTKJBb9u8RD344JFDNLDmDdWVpJLgKGJA0HXB2%7EvgTm6-3zEYPqfHYy0Ur2E7%7EpBy85fNA%7EB1yQcdq33T1uclfn3tZnV1X2dp3vb7BnqXYkta4sk3yX0-VmrFme7GQB9wZgfAoVMPuXTCTSFpXBYF0eWcnPnh8zjzkHgt%7ELW7RGWrMpshr1JibU0rY2f0fSgbvj4NME%7EjLA76giWrXcKNb2HM-KqlptWirvQI23rNB0FD1qDV6aTY7Hdlbhs61EEmY4L5IuWowCiY9UJumC%7ERtvZZaX8zEjn4lMwEQQrQ81sUq8A__)
 
@@ -38,10 +38,34 @@ Once you get there, click on “VariableImporter.jsx”, then click the “Raw�
 ![image](https://user-images.githubusercontent.com/49830314/170619269-2ff34fe6-9a5d-469f-8c21-af734786164a.png)
 
 - Now we will bind the the variables
-
-- After binding variables you are good to go
-
+#### Binding Variables
 https://user-images.githubusercontent.com/49830314/170620466-15ecebd9-f8a8-4571-83eb-9849dd823ef9.mp4
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch 
+3. Commit your Changes 
+4. Push to the Branch 
+5. Open a Pull Request
+
+
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+
+## Contact
+
+Your Name - [@SMZawahir1](https://twitter.com/SMZawahir1) - zawahirkashif@gmail.com
+
+Project Link: [https://github.com/zawahirkashif/VariableImporter](https://github.com/zawahirkashif/VariableImporter)
+
 
 
 
