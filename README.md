@@ -21,9 +21,31 @@ Once you get there, click on “VariableImporter.jsx”, then click the “Raw�
 #### Variable Importer Dialog Box
 ![](https://cdn.loom.com/images/originals/2ae4802d23a9443eb9bbf5bd4ff3854c.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZG4ubG9vbS5jb20vaW1hZ2VzL29yaWdpbmFscy8yYWU0ODAyZDIzYTk0NDNlYjliYmY1YmQ0ZmYzODU0Yy5qcGciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NTM3MDU1Nzl9fX1dfQ__&Key-Pair-Id=APKAJQIC5BGSW7XXK7FQ&Signature=eoK9luv8U86sDXZrNCZ5sYiUUyjjqEhBD%7E8pWCV9Wt9w6ekRqCNPuk3gFDalKrre1gAI%7EDjxM7tBWNNtkoRsAEf0GvqerVBFHhEhbbAU6iKAxss1y%7EjhhgzNp02QG6tTeaxtUgcI%7Euf916zj4qeJm1%7EQ04hC%7ECyYTYRN9V30AdoJsiFXulLEqNXOtTiaVAU15JCX%7EjW6IgZ2hy6DUlGCAXmyl4%7EsrLa6opzV65lkEqN%7E2T1GCY-xUk7qY0lcXlnNSHpV6R0yCvw-qkzPe6x-aSQTksO0lq0GziL5uxeNOAQ2TXY-syfoc6JoCZc3gW6QSb6cxEliII71AHTkbE9vtg__)
 
-- Choose the .csv file you want 
+- Create a .csv file you want to insert in your illustrator template
 #### Test Data CSV file
 ![](https://cdn.loom.com/images/originals/376d699856a440fbafa108059f606369.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZG4ubG9vbS5jb20vaW1hZ2VzL29yaWdpbmFscy8zNzZkNjk5ODU2YTQ0MGZiYWZhMTA4MDU5ZjYwNjM2OS5qcGciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NTM3MDU4MzF9fX1dfQ__&Key-Pair-Id=APKAJQIC5BGSW7XXK7FQ&Signature=R1Nw9x9V3lbIl6L6k6t30%7EuSbdDXL%7EUHG4GwYuyzc9v%7EP0glHxk6kcTDpmr2l1fxoaOcKTSPKtGTujPOTK-QbIwQj0MUotADZjFIZA7XRiZO4aKehbPYtwqWpcMgyTMPUYCjZ-MR0h2zrwrv11BFGYQZFTb0EQRhxhjlRMGkaCuwa4T7p%7EEkKh-MUqxZX68LgL1XZowSeAO-nZ3EK2359hf0B4uRno-puYbw81MYV4wdOCSdgDpsIPwU2Jnt28F9QzPvNrWVAoGjvqbOcl237Kzi5EYcYPxXiH2NfI14lhb1%7EntR7H2kVqtYC7FpORLYV-EM13bNFIcstk3LUte3mA__)
+
+- Choose the .csv file 
+#### Select Test Data CSV file
+![image](https://user-images.githubusercontent.com/49830314/170618857-322a5564-02f7-4b45-aace-b77d8734d16f.png)
+
+- Click on option in the Variable Import dialogue 
+#### Import Variables
+![image](https://user-images.githubusercontent.com/49830314/170618960-7a2f84f5-3a67-4fa0-b73c-434f83a2e183.png)
+- Click on import variable
+- Goto windows > variables in Adobe Illustrator.
+#### Variable Window In Illustrator
+![image](https://user-images.githubusercontent.com/49830314/170619269-2ff34fe6-9a5d-469f-8c21-af734786164a.png)
+
+- Now we will bind the the variables
+
+- After binding variables you are good to go
+
+https://user-images.githubusercontent.com/49830314/170620466-15ecebd9-f8a8-4571-83eb-9849dd823ef9.mp4
+
+
+
+
 
 
 
